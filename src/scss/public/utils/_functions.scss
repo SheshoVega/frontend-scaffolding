@@ -1,0 +1,170 @@
+//My custom functions
+
+//MOBILE FIRST APPROACH
+
+//Retorna una lista con los breakpoints
+@function getMediasMin($lowMedia,$topMedia,$percent){
+
+	$list: $topMedia;
+	$loop:true;
+
+	//ingresa los medias en la lista
+	@while $loop == true {
+
+		$topMedia: $topMedia - ($topMedia*$percent);
+
+		@if $topMedia > $lowMedia {      
+
+			$list: join($topMedia, $list);
+
+		}
+		@else {
+
+			$loop: false;
+
+		}
+
+	}
+
+	//ingresa el ultimo valor del extremo
+	$list: join($lowMedia, $list);
+	// @error 'las lista es #{$list}';
+
+	@return $list;
+
+}// end getMediasMin
+
+// retorna la lista (manera ascendente) de las dimensiones que tendra el elemento en cada media query
+@function getMinDimentions($listSize, $maxDimen, $percent){
+    
+    $list: $maxDimen;
+
+    @while $listSize > 1 {
+
+        $maxDimen: $maxDimen - ($maxDimen*$percent); 
+        $list: join($maxDimen, $list);
+		$listSize: $listSize - 1;
+		
+	}
+	
+	// @error 'las lista es #{$list}';
+	
+	@return $list;
+	
+}// end getMinDimentions
+
+// retorna la lista (manera descendente) de las dimensiones que tendra el elemento en cada media query
+@function getMinDimentionsUp($listSize, $minDimen, $percent){
+    
+    $list: $minDimen;
+
+    @while $listSize > 1 {
+
+        $minDimen: $minDimen + ($minDimen*$percent); 
+        $list: join($minDimen, $list);
+		$listSize: $listSize - 1;
+		
+	}
+	
+	// @error 'las lista es #{$list}';
+	
+	@return $list;
+	
+}// end getMinDimentions
+
+// retorna una lista (manera ascendente) de porcentajes segun la unidad de operacion (sustraccion o adicion)
+@function getMinPercentsList($listSize, $maxPercent, $unit, $operation){
+    
+    $list: $maxPercent;
+
+    @while $listSize > 1 {
+
+		@if $operation == '-' {
+			$maxPercent: $maxPercent - $unit; 
+		}
+		@if $operation == '+' {
+			$maxPercent: $maxPercent + $unit; 
+		}        
+        $list: join($maxPercent, $list);
+		$listSize: $listSize - 1;
+		
+	}
+	
+	// @error 'las lista es #{$list}';
+	
+	@return $list;
+	
+}// end getMinPercentsList
+
+
+//DESKTOP FIRST APPROACH
+
+//Retorna una lista con los breakpoints
+@function getMediasMax($topMedia,$lowMedia,$percent){
+
+	$list: $lowMedia;
+	$loop:true;
+
+	//ingresa los medias en la lista
+	@while $loop == true {
+
+		$lowMedia: $lowMedia + ($lowMedia*$percent);
+
+		@if $lowMedia < $topMedia {      
+			
+			$list: join($lowMedia, $list);
+
+		}
+		@else {
+
+			$loop: false;
+
+		}
+
+	}
+
+	//ingresa el ultimo valor del extremo
+	$list: join($topMedia, $list);
+	// @error 'las lista es #{$list}';
+
+	@return $list;
+
+}// end getMediasMax
+
+// retorna la lista (manera ascendente) de las dimensiones que tendra el elemento en cada media query
+@function getMaxDimentionsUp($listSize, $minDimen, $percent){
+  
+    $list: $minDimen;
+
+    @while $listSize > 1 {
+
+        $minDimen: $minDimen + ($minDimen*$percent); 
+        $list: append($list,$minDimen);
+        $listSize: $listSize - 1;
+        
+    }
+
+//   @error 'las lista es #{$list}';
+
+    @return $list;
+
+}// end getMaxDimentionsUp
+
+// retorna la lista (manera decreciente) de las dimensiones que tendra el elemento en cada media query
+@function getMaxDimentionsDown($listSize, $maxDimen, $percent){
+	
+	$list: $maxDimen;
+  
+	@while $listSize > 1 {
+
+		$maxDimen: $maxDimen - ($maxDimen*$percent); 
+		$list: append($list,$maxDimen);
+		$listSize: $listSize - 1;
+
+	}
+
+  //   @error 'las lista es #{$list}';
+
+	@return $list;
+  
+}// end getMaxDimentionsdown

@@ -1,0 +1,17 @@
+.btn {
+    
+    display: inline-block;
+    padding: 0.25em 1em;
+    text-decoration: none;
+    background-color: $secondary-dark-bg;
+    @extend .roboto-bold;
+    font-size: 1.25em;
+    color: $primary-font-color;
+    border-radius: 1em;
+    margin: 0 auto;
+
+    &:hover {
+        color: $secondary-font-color;
+    }
+
+} // end .btn

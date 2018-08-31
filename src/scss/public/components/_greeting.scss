@@ -1,0 +1,25 @@
+.greeting {
+
+    flex-basis: 100%;
+    
+    h1 {
+
+        @extend .roboto-bold;
+        color: $secondary-font-color;
+        margin: 1.5rem 0;
+        font-size: 3em;
+        text-align: center;
+
+    } // end .greeting h1
+
+    p {
+
+        @extend .roboto-light;
+        color: $primary-font-color;
+        margin: 1rem;
+        font-size: 1.5em;
+        text-align: center;
+
+    } // end .greeting p
+
+} // end .greeting

@@ -1,0 +1,47 @@
+.fonts {
+
+    &-roboto {
+        font-family: 'Roboto', sans-serif;
+    }
+
+}// end .fonts
+
+.roboto {
+
+    // robotoLight
+    &-light {
+
+        @extend .fonts-roboto;
+        font-style: normal;
+        font-weight: 300;
+
+    } //end .roboto-light
+
+    // robotoRegular
+    &-regular {
+
+        @extend .fonts-roboto;
+        font-style: normal;
+        font-weight: 400;
+
+    } //end .roboto-regular
+
+    // robotoMedium
+    &-medium {    
+
+        @extend .fonts-roboto;
+        font-style: normal;
+        font-weight: 500;
+
+    } //end .roboto-medium
+
+    // robotoBold
+    &-bold {
+
+        @extend .fonts-roboto;
+        font-style: normal;
+        font-weight: 700;
+
+    } //end .roboto-bold
+
+} //end .roboto

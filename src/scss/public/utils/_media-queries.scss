@@ -1,0 +1,29 @@
+// Mixin para crear una media query tipo 'min' o 'max
+@mixin responsive($type, $media){
+
+    @media only screen {
+
+        @if $type == min {
+
+            @media  (min-width: $media/16+em) { @content; };
+
+        } 
+        @else if $type == max {
+
+            @media (max-width: $media/16+em) { @content; };
+            
+        }
+
+    }   
+
+} //end responsive
+
+// Mixin para crear una media query en un bloque o segmento de medias
+@mixin responsiveBlock($min-media, $max-media){
+
+    @media only screen {
+
+        @media (min-width: $min-media/16+em) and (max-width: $max-media/16+em) { @content; }
+
+    }
+} // end responsiveBlock
